@@ -5,7 +5,7 @@ import sys
 import os
 
 #ishita's laptop does not support BERT
-if os.getcwd() != 'C:\\Users\\sakur\\Desktop\\Hophacks\\website\\fact-checker':
+if os.getcwd() != 'C:\\Users\\sakur\\Desktop\\Hophacks\\website2\\fact-checker':
     sys.path.insert(0, './cis/home/ambar/my_documents/docker-data/com/hophacks20')
     from test_search_engine import check_true, sanitizer2
 
@@ -35,7 +35,3 @@ def post2():
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
-    
-
-
-
