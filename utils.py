@@ -201,7 +201,7 @@ def intersecting_who(question, verbose=True):
     else:
         return (False, -1) 
 
-def get_scores(corpus, question, verbose=True):
+def get_scores(corpus, question, verbose=True, attribution=False, urls=None):
     res, who_fact = intersecting_who(question, verbose=verbose)
     # pdb.set_trace()
     if res:
@@ -233,13 +233,22 @@ def get_scores(corpus, question, verbose=True):
         print("\nTop 5 most similar sentences in corpus:")
 
     res = []
-    for idx in top_results[0:top_k]:
-        cur_res = [corpus[idx].strip(), cos_scores[idx]]
-        res.append(cur_res)
-        if verbose:
-            print(cur_res[0], "(Score: %.4f)" % (cur_res[1]))
+    if not attribution:
+        for idx in top_results[0:top_k]:
+            cur_res = [corpus[idx].strip(), cos_scores[idx]]
+            res.append(cur_res)
+            if verbose:
+                print(cur_res[0], "(Score: %.4f)" % (cur_res[1]))
 
-    return res
+        return res
+
+    else:
+        for idx in top_results[0:top_k]:
+            cur_res = [corpus[idx].strip(), cos_scores[idx], urls[idx]]
+            res.append(cur_res)
+        return res
+
+
 
 def get_true_false(corpus, verbose=True):
     corpus_embeddings = embedder.encode(corpus, convert_to_tensor=True)

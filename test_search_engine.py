@@ -10,7 +10,7 @@ api_url = 'https://www.googleapis.com/customsearch/v1'
 threshold_high = 0.78
 threshold_low = 0.78
 
-def check_true(question, verbose=True):
+def check_true(question, verbose=True, attribution=False):
     query = {
         'key': 'AIzaSyCtfHm7PXk1ZD_vcXihKzUk5rNO287S0DY', 
         'cx': '0156ca17ee72cb816', 
@@ -23,18 +23,21 @@ def check_true(question, verbose=True):
     else:
         # pdb.set_trace()
         resp_json = response.json()
+        # print ('HELLLOOOOOOOO')
+        # print (resp_json.url)
+        urls = []
         snippets = []
         for item in resp_json['items']:
             sentence = sanitizer2(item['snippet'])
             snippets.append(sentence)
+            urls.append(item['link'])
             #print ('\'' + item['snippet'].rstrip('...').lstrip('...') + '\'')
             # print (item['formattedUrl'])
             # print ('#############')
         if verbose:
             print('\n'.join(snippets))
 
-        res_scores = get_scores(snippets, question, verbose=verbose)
-        
+        res_scores = get_scores(snippets, question, verbose=verbose, attribution=attribution, urls=urls)
         if verbose:
             print ('RES SCORES')
             print (res_scores)
@@ -49,7 +52,11 @@ def check_true(question, verbose=True):
         else:
             res = 0.5
             if verbose: print ("WE ARE UNSURE")
-        return res
+
+        if not attribution: 
+            return res
+        else:
+            return res, res_scores
 
     return res
 
@@ -142,27 +149,28 @@ data_nasem = [
 ]
 
 if __name__ == '__main__':
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("q", help="enter query", type=str)
-    # args = parser.parse_args()
-    # res = check_true(sanitizer2(args.q), verbose=True)
-    # print ('RESULT:', res)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("q", help="enter query", type=str)
+    args = parser.parse_args()
+    res, res_scores = check_true(sanitizer2(args.q), verbose=True, attribution=True)
+    print ('RESULT:', res)
+    print ([idx[2] for idx in res_scores[:3]])
 
-    print ('Calculating Accuracy on Entire Data...')
-    acc = 0.0
-    tot_num = 0
-    for question, answer in data_nasem:
-        pred = check_true(question, verbose=False)
-        tot_num += 1.0
+    # print ('Calculating Accuracy on Entire Data...')
+    # acc = 0.0
+    # tot_num = 0
+    # for question, answer in data_nasem:
+    #     pred = check_true(question, verbose=False)
+    #     tot_num += 1.0
 
-        if pred != answer: 
-            print (question, "Incorrect")
-        else:
-            acc += 1.0
-            print (question, "Correct")
+    #     if pred != answer: 
+    #         print (question, "Incorrect")
+    #     else:
+    #         acc += 1.0
+    #         print (question, "Correct")
 
-    acc /= tot_num
-    print ("Accuracy: ", acc * 100.0)
+    # acc /= tot_num
+    # print ("Accuracy: ", acc * 100.0)
 
 
 
