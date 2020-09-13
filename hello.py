@@ -26,8 +26,9 @@ def index():
 def post2():
     text = request.form['query']
     try:
-        response = check_true(sanitizer2(text))
+        #response = check_true(sanitizer2(text))
         # print ('HAHAHAHAHA', response)
+        response = 0
         response = ['False', 'Unsure', 'True'][response * 2]
     except:
         response = 'Unsure'
