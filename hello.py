@@ -8,7 +8,7 @@ import os
 isAmbar = False
 if os.getcwd() != 'C:\\Users\\sakur\\Desktop\\Hophacks\\website2\\fact-checker':
     isAmbar = True
-    sys.path.insert(0, './cis/home/ambar/my_documents/docker-data/com/hophacks20')
+    sys.path.insert(0, './cis/home/ambar/my_documents/docker-data/com/hophacks20_2')
     from test_search_engine import check_true, sanitizer2
 
 app = Flask(__name__)
