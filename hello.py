@@ -29,7 +29,7 @@ def post2():
     try:
         if isAmbar:
             response = check_true(sanitizer2(text))
-        else: response = 0
+        else: response = 1
 
         response = ['False', 'Unsure', 'True'][response * 2]
     except:
