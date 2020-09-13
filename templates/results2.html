@@ -29,6 +29,10 @@
     outline: 0;
     box-shadow: none;
   }
+
+  p span {
+    display: block;
+  }
 </style>
 
 <head>
@@ -43,13 +47,26 @@
       <form action="{{url_for('index')}}">
         <div class="inner-form">
           <div class="text-field first-wrap" style='position:fixed; top:20%; left:10%; background:transparent'>
-            <p style="font-size:30px"><b>{{ question }}</b></p>
-            <br>
-                <p style="font-size:20px">{{ result }}</p>
-                <br><br><br>
+
+      <table style="width:100%">
+  <tr>
+    <th><p style="font-size:30px"> <span> <b>{{ question }}</b> </span></p></th>
+  </tr>
+  <tr>
+    <th><p style="font-size:20px"> <span>{{ result }} </span></p></th>
+  </tr>
+  <tr>
+    <th><div class="text second-wrap"> <input type="submit" class='btn-search' value='Search again!'> </div></th>
+  </tr>
+</table>
+
+<!--                 <p style="font-size:30px"> <span> <b>{{ question }}</b> </span></p>
+
+                <p style="font-size:20px"> <span>{{ result }} </span></p>
+
              <div class="text second-wrap">
-               <input type="submit" class='button' value='Search again!'>
-             </div>
+               <input type="submit" class='btn-search' value='Search again!'>
+             </div> -->
            </div>
         </div>
       </form>
