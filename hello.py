@@ -35,7 +35,7 @@ def post2():
     except:
         response = 'Unsure'
 
-    return render_template('results2.html', result=response)
+    return render_template('results2.html', result=response, question=text)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
