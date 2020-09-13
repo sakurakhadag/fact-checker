@@ -6,6 +6,29 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
+  .button {
+    height: 100%;
+    width: 100%;
+    white-space: nowrap;
+    font-size: 16px;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    background: #00ad5f;
+    transition: all .2s ease-out, color .2s ease-out;
+    font-weight: 300;
+  }
+
+  .button:hover {
+    background: #009451;
+  }
+
+  .button:focus {
+    outline: 0;
+    box-shadow: none;
+  }
 </style>
 
 <head>
@@ -25,7 +48,7 @@
                 <p style="font-size:20px">{{ result }}</p>
                 <br><br><br>
              <div class="text second-wrap">
-               <input type="submit" class='btn-search' value='Search again!'>
+               <input type="submit" class='button' value='Search again!'>
              </div>
            </div>
         </div>
