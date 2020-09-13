@@ -5,7 +5,9 @@ import sys
 import os
 
 #ishita's laptop does not support BERT
+isAmbar = False
 if os.getcwd() != 'C:\\Users\\sakur\\Desktop\\Hophacks\\website2\\fact-checker':
+    isAmbar = True
     sys.path.insert(0, './cis/home/ambar/my_documents/docker-data/com/hophacks20')
     from test_search_engine import check_true, sanitizer2
 
@@ -25,13 +27,15 @@ def index():
 def post2():
     text = request.form['query']
     try:
-        response = check_true(sanitizer2(text))
-        # print ('HAHAHAHAHA', response)
+        if isAmbar:
+            response = check_true(sanitizer2(text))
+        else: response = 0
+
         response = ['False', 'Unsure', 'True'][response * 2]
     except:
         response = 'Unsure'
 
-    return render_template('result.html', result=response)
+    return render_template('results2.html', result=response)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
