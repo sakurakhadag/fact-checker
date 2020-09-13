@@ -26,16 +26,19 @@ def index():
 @app.route('/', methods=['POST'])
 def post2():
     text = request.form['query']
+    link_obt = ['', '', '']
     try:
         if isAmbar:
-            response = check_true(sanitizer2(text))
+            response, response_full = check_true(sanitizer2(text), attribution=True)
+            link_obt = [idx[2] for idx in response_full[:3]]
+            print (link_obt)
         else: response = 1
 
         response = ['False', 'Unsure', 'True'][response * 2]
     except:
         response = 'Unsure'
 
-    return render_template('results2.html', result=response, question=text)
+    return render_template('results2.html', result=response, question=text, links=list(enumerate(link_obt)))
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

@@ -149,28 +149,28 @@ data_nasem = [
 ]
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("q", help="enter query", type=str)
-    args = parser.parse_args()
-    res, res_scores = check_true(sanitizer2(args.q), verbose=True, attribution=True)
-    print ('RESULT:', res)
-    print ([idx[2] for idx in res_scores[:3]])
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("q", help="enter query", type=str)
+    # args = parser.parse_args()
+    # res, res_scores = check_true(sanitizer2(args.q), verbose=True, attribution=True)
+    # print ('RESULT:', res)
+    # print ([idx[2] for idx in res_scores[:3]])
 
-    # print ('Calculating Accuracy on Entire Data...')
-    # acc = 0.0
-    # tot_num = 0
-    # for question, answer in data_nasem:
-    #     pred = check_true(question, verbose=False)
-    #     tot_num += 1.0
+    print ('Calculating Accuracy on Entire Data...')
+    acc = 0.0
+    tot_num = 0
+    for question, answer in data:
+        pred = check_true(question, verbose=False)
+        tot_num += 1.0
 
-    #     if pred != answer: 
-    #         print (question, "Incorrect")
-    #     else:
-    #         acc += 1.0
-    #         print (question, "Correct")
+        if pred != answer: 
+            print (question, "Incorrect")
+        else:
+            acc += 1.0
+            print (question, "Correct")
 
-    # acc /= tot_num
-    # print ("Accuracy: ", acc * 100.0)
+    acc /= tot_num
+    print ("Accuracy: ", acc * 100.0)
 
 
 

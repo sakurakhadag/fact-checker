@@ -57,8 +57,17 @@
     <th><p style="font-size:20px"> <span>{{ result }} </span></p></th>
   </tr>
   <tr>
+  <th>You may find these links useful: {% for ind, link in links %} <a href="{{ link }}"> [{{ind}}]</a> {% endfor %}</th>
+  </tr>
+  <tr> <th> <br> </th> </tr>
+   <tr>
     <th><div class="text second-wrap"> <input type="submit" class='button' value='Search again!'> </div></th>
   </tr>
+<!-- 
+      <tr>
+      <td>{{ link }}</td>
+    </tr> -->
+  
 </table>
 
 <!--                 <p style="font-size:30px"> <span> <b>{{ question }}</b> </span></p>
