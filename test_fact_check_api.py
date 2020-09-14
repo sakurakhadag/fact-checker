@@ -2,7 +2,7 @@
 # import pdb
 
 # api_url = 'https://factchecktools.googleapis.com/v1alpha1/claims:search'
-# query = {'query': 'coronavirus is a type of rabies', 'key': 'AIzaSyCtfHm7PXk1ZD_vcXihKzUk5rNO287S0DY'}
+# query = {'query': 'coronavirus is a type of rabies', 'key': 'xxxxxx'}  #add API key
 # response = requests.get(api_url, params=query, headers={'Content-Type':'application/json'})
 # if response.status_code != 200:
 #     # This means something went wrong.
@@ -21,7 +21,7 @@
 
 
 # curl \
-#   'https://factchecktools.googleapis.com/v1alpha1/claims:search?query=is%20google%20real&key=955767f0032cf20f122a012549e42d11eb4f398c' \
+#   'https://factchecktools.googleapis.com/v1alpha1/claims:search?query=is%20google%20real&key=xxxxxx' \
 #   --header 'Accept: application/json' \
 #   --compressed
 
@@ -54,7 +54,7 @@ def sanitizer1(sentence):
     return sentence
 
 def get_verdicts(question, verbose=True):
-    query = {'query': question, 'key': 'AIzaSyCtfHm7PXk1ZD_vcXihKzUk5rNO287S0DY'}
+    query = {'query': question, 'key': 'xxxxxx'}  #generate API key first
     response = requests.get(api_url, params=query, headers={'Content-Type':'application/json'})
     if response.status_code != 200:
         # This means something went wrong.
