@@ -5,7 +5,7 @@ from nltk.tokenize import RegexpTokenizer
 import re
 from utils import get_scores, sanitizer2
 
-# api_url = 'https://www.googleapis.com/customsearch/v1?&cx=0156ca17ee72cb816&q=is%20covid%20a%20virus'
+# api_url = 'https://www.googleapis.com/customsearch/v1?&cx=yyyyy&q=is%20covid%20a%20virus'
 api_url = 'https://www.googleapis.com/customsearch/v1'
 threshold_high = 0.78
 threshold_low = 0.78
