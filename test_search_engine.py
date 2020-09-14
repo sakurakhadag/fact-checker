@@ -12,8 +12,8 @@ threshold_low = 0.78
 
 def check_true(question, verbose=True, attribution=False):
     query = {
-        'key': 'AIzaSyCtfHm7PXk1ZD_vcXihKzUk5rNO287S0DY', 
-        'cx': '0156ca17ee72cb816', 
+        'key': 'xxxxx', #generate API key first
+        'cx': 'yyyyy', #create custom search using Google Custom Search API
         'q': question
     }
     response = requests.get(api_url, params=query, headers={'Content-Type':'application/json'})
