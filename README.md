@@ -6,7 +6,7 @@ This is done in the test_search_engine.py file.
 
 Then we score these results using sentence similarity based on Bert embeddings (this function is available in the utils.py file).
 
-Lastly, we display the verdict (whether or not the fact is true or false) on the website. 
+Lastly, we display the verdict (whether or not the fact is true or false) and the citations for the articles we used to get to this conclusion. 
 
 To check a query using test_search_engine.py, use the following format:
 
