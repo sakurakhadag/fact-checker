@@ -11,9 +11,12 @@ threshold_high = 0.78
 threshold_low = 0.78
 
 def check_true(question, verbose=True, attribution=False):
+    keys = []
+    with open('key.txt', 'r') as f:
+        keys = f.readlines()
     query = {
-        'key': 'xxxxx', #generate API key first
-        'cx': 'yyyyy', #create custom search using Google Custom Search API
+        'key': keys[0].rstrip(), #generate API key first
+        'cx': keys[1].rstrip(), #create custom search using Google Custom Search API
         'q': question
     }
     response = requests.get(api_url, params=query, headers={'Content-Type':'application/json'})
